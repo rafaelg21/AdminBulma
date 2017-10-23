@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin | Table Records</title>
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Bulma -->
+    <link rel="stylesheet" href="dist/css/admin.css">
+    <link rel="stylesheet" href="dist/css/table.sass">
+    <link rel="stylesheet" href="bower_components/bulma/css/bulma.css">
+    <link rel="stylesheet" href="bower_components/bulma/sass/components/pagination.sass">
+    
+</head>
+<body>
+<div class="wrapper" style="height: auto; min-height: 100%;">
+ <div class="appMenuNavBar">
+  <section class="main-header" >
+        <div class="columns">
+           
+            <div class="column navbar-right">              
+                <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+                    <a class="navbar-item logo" href="#">
+                      <img src="dist/img/bulma-logo-white2.png" alt="ADM Bulma">
+                    </a>         
+                    <a href="#" class="sidebar-toggle menu-toggle"  @click="menu_toggle= ! menu_toggle">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                    </a>
+                  
+                  <div class="navbar-brand navbar-end pull-right">
+                          <div class="navbar-item has-dropdown is-hoverable" :class="{'is-active-menu-dropdown' : nav_dropdown==true &&  op=='msg'}">
+                            <a class="navbar-item" href="#" @click="nav_dropdown= ! nav_dropdown;  op='msg'" >
+                                <span class="icon" style="color: #fff;">
+                                    <i class="fa fa-envelope-o"></i>
+                                    <span class="tag is-success">4</span>
+                                </span>
+                            </a>                             
+                            <div class="op-navbar-dropdown"  :class="{'is-active-navbar-dropdown' : nav_dropdown==true &&  op=='msg'}" >
+                              <div class="columns">
+                                   <div class="column is-12 content-dropdown dropdown-messages-panel">  
+                                       <h3 class="is-bold  has-text-centered">You have 4 messages</h3> 
+                                       <ul class="menu">
+                                           <li>
+                                             <a href="#">
+                                                <div class="pull-left">
+                                                    <img src="dist/img/av06.png" class="img-circle image" alt="User Image">
+                                                  </div>
+                                                  <h4>
+                                                    Support Team
+                                                    <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                                  </h4>
+                                                  <p>Why not buy a new awesome theme?</p>
+                                             </a>
+                                           </li>  
+                                           <li>
+                                              <a href="#">
+                                                 <div class="pull-left">
+                                                     <img src="dist/img/av02.png" class="img-circle image" alt="User Image">
+                                                   </div>
+                                                   <h4>
+                                                      AdminLTE Design Team
+                                                     <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                                   </h4>
+                                                   <p>Why not buy a new awesome theme?</p>
+                                              </a>
+                                            </li>                                              
+                                            <li>
+                                                <a href="#">
+                                                     <div class="pull-left">
+                                                       <img src="dist/img/av04.png" class="img-circle image" alt="User Image">
+                                                     </div>
+                                                     <h4>
+                                                        Developers
+                                                       <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                                     </h4>
+                                                     <p>Why not buy a new awesome theme?</p>
+                                                </a>
+                                            </li>  
+                                            <li>
+                                                <a href="#">
+                                                      <div class="pull-left">
+                                                        <img src="dist/img/av01.png" class="img-circle image" alt="User Image">
+                                                      </div>
+                                                      <h4>
+                                                          Sales Department
+                                                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                                      </h4>
+                                                      <p>Why not buy a new awesome theme?</p>
+                                                </a>
+                                            </li>        
+                                       </ul>
+                                     </div>                     
+                                 </div> 
+                                 <hr class="navbar-divider">
+                                 <div class="column footer-dropdown">
+                                   <div class="has-text-centered">
+                                     <a herf="#" class="is-small bd-tw-button button is-outlined " />See all Messages</a>  
+                                   </div>
+                                  
+                                 </div>                   
+                           </div>
+                          </div>
+                            <div class="navbar-item has-dropdown is-hoverable" :class="{'is-active-menu-dropdown' : nav_dropdown==true &&  op=='noti'}">
+                                  <a class="navbar-item" href="#" @click="nav_dropdown= ! nav_dropdown;  op='noti'" >
+                                      <span class="icon" style="color: #fff;">
+                                          <i class="fa fa-bell-o"></i>
+                                          <span class="tag is-info">10</span>
+                                      </span>
+                                  </a>  
+                                  <div class="op-navbar-dropdown"  :class="{'is-active-navbar-dropdown' : nav_dropdown==true &&  op=='noti'}" >
+                                     <div class="columns">
+                                          <div class="column is-12 content-dropdown dropdown-noti-panel">  
+                                              <h3 class="is-bold  has-text-centered">You have 10 notifications</h3> 
+                                              <ul class="menu">
+                                                  <li>
+                                                    <a href="#">
+                                                      <i class="fa fa-users text-color-success"></i> 5 new members joined today
+                                                    </a>
+                                                  </li>
+                                                  <li>
+                                                    <a href="#">
+                                                      <i class="fa fa-warning text-color-info"></i> Very long description here...
+                                                      .
+                                                    </a>
+                                                  </li>
+                                                  <li>
+                                                    <a href="#">
+                                                      <i class="fa fa-users text-color-warning"></i> 5 new members joined
+                                                    </a>
+                                                  </li>
+                                                  <li>
+                                                    <a href="#">
+                                                        <i class="fa fa-shopping-cart text-color-primary"></i> 
+                                                        25 sales made
+                                                    </a>
+                                                  </li>
+                                                  <li>
+                                                    <a href="#">
+                                                      <i class="fa fa-user text-color-danger"></i> You changed your username
+                                                    </a>
+                                                  </li>
+                                              </ul>
+                                            </div>                     
+                                        </div> 
+                                        <hr class="navbar-divider">
+                                        <div class="column footer-dropdown">
+                                          <div class="has-text-centered">
+                                            <a herf="#" class="is-small bd-tw-button button is-outlined " />View all tasks</a>  
+                                          </div>
+                                         
+                                        </div>                   
+                                  </div>
+                            </div>
+                            <div class="navbar-item has-dropdown is-hoverable" :class="{'is-active-menu-dropdown' : nav_dropdown==true &&  op=='task'}"> 
+                                    <a class="navbar-item" href="#"  @click="nav_dropdown= ! nav_dropdown;  op='task'">
+                                        <span class="icon" style="color: #fff;">
+                                            <i class="fa fa-flag-o"></i>
+                                            <span class="tag is-danger">9</span>
+                                        </span>
+                                    </a>   
+                                    <div class="op-navbar-dropdown"  :class="{'is-active-navbar-dropdown' : nav_dropdown==true &&  op=='task'}" >
+                                        <div class="columns">
+                                            <div class="column is-12 content-dropdown dropdown-task-panel has-text-centered">  
+                                                <h3 class="is-bold">You have 9 tasks</h3> 
+                                                <small class="is-pulled-left">Design some buttons</small>  
+                                                <small class="is-pulled-right">20%</small>
+                                                <progress class="progress is-primary is-small" value="20" max="100">20%</progress>
+                                                <small class="is-pulled-left">Create a nice theme</small>
+                                                <small class="is-pulled-right">300%</small>
+                                                <progress class="progress is-info is-small" value="305" max="100">30%</progress>
+                                                <small class="is-pulled-left">Some task I need to do</small>
+                                                <small class="is-pulled-right">50</small>
+                                                <progress class="progress is-success is-small" value="50" max="100">50%</progress>
+                                                <small class="is-pulled-left"> Make beautiful transitions</small>
+                                                <small class="is-pulled-right">80%</small>
+                                                <progress class="progress is-warning is-small" value="80" max="100">80%</progress>                                                     
+                                            </div>                     
+                                          </div> 
+                                          <hr class="navbar-divider">
+                                          <div class="column footer-dropdown">
+                                            <div class="has-text-centered">
+                                              <a herf="#" class="is-small bd-tw-button button is-outlined " />View all tasks</a>  
+                                            </div>
+                                           
+                                          </div>                   
+                                    </div>
+                            </div>  
+
+                            <div class="navbar-item has-dropdown is-hoverable" :class="{'is-active-menu-dropdown' : nav_dropdown==true &&  op=='user'}">
+                                    <a class="navbar-link user-panel" href="#" @click="nav_dropdown= ! nav_dropdown;  op='user'" >
+                                        <img class="image is-24x24 img-circle" src="dist/img/av05.png" alt="">
+                                        <span class="is-hidden-touch">  Rafael Uzcategui</span>
+                                    </a>
+                                    <div class="op-navbar-dropdown dropdown-user-panel"  :class="{'is-active-navbar-dropdown' : nav_dropdown==true &&  op=='user'}" >
+                                      <div class="columns">
+                                        <div class="column is-12 content-dropdown has-text-centered">  
+                                          <div class="user-header">        
+                                            <figure class="image is-96x96 ">
+                                                <img class="img-circle" src="dist/img/av05.png" alt="">
+                                            </figure> 
+                                          <h3 class="is-bold">Rafael Uzcategui</h3> 
+                                          <small>(WebMaster)</small>  
+                                         </div> 
+                                        </div>                     
+                                      </div> 
+                                      <div class="column footer-dropdown">
+                                        <div class="pull-left">
+                                          <a herf="#" class="is-small bd-tw-button button is-outlined " />Profile</a>  
+                                        </div>
+                                        <div class=" pull-right">
+                                          <a herf="#" class="is-small bd-tw-button button is-outlined " />Sign out</a>
+                                        </div>
+                                      </div>                        
+                                    </div>
+                            </div>  
+                            
+                        </div>
+                      
+                    </nav>                                  
+            </div>        
+        </div>
+  </section>     
+
+  <aside class=""  v-bind:class="menu_toggle==true ? 'main-sidebar ' : 'main-sidebar is-hidden-touch' ">
+  <section class="sidebar ">
+        <div class="bd-snippet-preview">
+            
+        <nav class="panel">
+          <div class="panel-block user-sidebar">
+              <div class="pull-left image">
+                <img src="dist/img/av05.png" class="image is-48x48 img-circle" alt="User Image">
+              </div>
+              <div class="pull-left info">
+                <p>Rafael Uzcategui</p>
+                <a href="#" class="is-small"><i class="fa fa-circle text-success"></i> Online</a>
+              </div>
+          </div>
+
+        <div class="panel-block">
+          <p class="control has-icons-left">
+            <input class="input is-small" placeholder="search" type="text">
+            <span class="icon is-small is-left">
+              <i class="fa fa-search"></i>
+            </span>
+          </p>
+        </div>
+        <p class="panel-heading">
+          Main Navegation
+        </p>
+        <a href="index.html" class="panel-block">
+            <span class="panel-icon ">
+                <i class="fa fa-dashboard"></i>
+            </span>
+            Dashboard
+        </a>
+
+        <a href="tablerecord.html" class="panel-block  is-active">
+          <span class="panel-icon is-danger">
+              <i class="fa fa-th"></i>
+          </span>
+          Tables Records
+        </a>
+        <a class="panel-block">
+          <span class="panel-icon">
+              <i class="fa fa-laptop"></i>
+          </span>
+          UI Elements
+        </a>
+        <a class="panel-block">
+          <span class="panel-icon">
+              <i class="fa fa-edit"></i>
+          </span>
+          Forms
+        </a>        
+        <a class="panel-block">
+          <span class="panel-icon">
+              <i class="fa fa-folder"></i>
+          </span>
+          Examples
+        </a>  
+        </nav>
+
+          </div> 
+  </section>  
+  </aside>
+</div>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <div class="columns">
+          <div class="column">
+            <h1 class="title">
+                <i class="fa fa-dashboard"></i> Table Records     
+              <small class="subtitle">Record Update</small>       
+            </h1>
+            
+          </div>
+          <div class="column">  
+            <nav class="breadcrumb is-right is-small" aria-label="breadcrumbs">
+                <ul>
+                  <li><a href="#">Home</a></li>
+                  <li class="is-active"><a href="#">Table Records</a></li>   
+                </ul>
+              </nav>
+          </div> 
+        </div>  
+      </section>
+
+  <!-- Modal Add Product -->
+
+  <div class="modal" id="modal-ter">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Modal title</p>
+          <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">        
+           
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success">Save changes</button>
+          <button class="button">Cancel</button>
+        </footer>
+      </div>
+    </div>
+
+
+  <!-- Main content -->
+  <section class="content">         
+    <div class="columns">
+        <div class="column">
+            <template>
+                <tabs animation="slide" :only-fade="false">
+                  <tab-pane label="Pictures">Pictures Tab</tab-pane>
+                  <tab-pane label="Music">Music Tab</tab-pane>
+                  <tab-pane label="Videos" selected>Video Tab</tab-pane>
+                  <tab-pane label="Documents" disabled>Document Tab</tab-pane>
+                </tabs>
+            </template>
+            <div class="box-content card">
+                <header class="card-header header-table">
+                  <p class="card-header-title">
+                      Product List
+                  </p>
+                  <span class="card-header-icon" aria-label="more options">
+                      <a class="button is-info is-small modal-button" data-target="modal-ter"><i class="fa fa-plus" aria-hidden="true"></i>
+                        Add Product</a>
+                  </span>  
+                  <span class="card-header-icon" aria-label="more options">
+                      <div class="dropdown is-small">
+                          <div class="dropdown-trigger">
+                            <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu">
+                              <span>Export Table</span>
+                              <span class="icon is-small">
+                                <i class="fa fa-angle-down" aria-hidden="true"></i>
+                              </span>
+                            </button>
+                          </div>
+                          <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                            <div class="dropdown-content">
+                              <a href="#" class="dropdown-item">
+                                  <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+                                  Format Excel
+                              </a>
+                              <a class="dropdown-item">
+                                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                  Format CSV
+                              </a>
+                              <a href="#" class="dropdown-item is-active">
+                                  <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                                  Format PDF
+                              </a>
+                            
+                            </div>
+                          </div>
+                        </div>
+                  </span>
+                  <span class="card-header-icon" aria-label="more options">
+                      <p class="control has-icons-left">
+                        <input placeholder="search" class="input is-small" type="text"> <span class="icon is-small is-left"><i class="fa fa-search"></i></span>
+                      </p>
+                  </span>  
+                                  
+                </header>
+                <div class="card-content">
+                  <div class="content">
+                      <table class="table is-striped">
+                          <thead>
+                            <tr>
+                              <th width="2%">
+                                <input type="checkbox" class="checkbox is-success" >
+                              </th>
+                              <th  width="13%">Code Product</th>
+                              <th>Name Product</th>
+                              <th class="is-center" width="10%">Image</th>
+                              <th>Qty</th>
+                              <th>Price</th>
+                              <th  class="is-center" width="5%">Status</th>
+                              <th class="is-center" width="15%">Actions</th>                           
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td><input type="checkbox"></td>
+                              <td><a href="#" class="text-color-primary">CA-8527-01</a></td>
+                              <td>Call of Duty IV</td>
+                              <td class="is-centered"><img src="dist/img/48x48.png" alt="" class="image is-48x48"></td>
+                              <td>100</td>
+                              <td>$158.50</td>                             
+                              <td class="is-center" ><span class="text-color-success">On</span></td>
+                              <td class="is-center">
+                                <a class="button is-warning is-small"> 
+                                  <i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                                <a class="button is-danger is-small"> 
+                                  <i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                              </td>
+                            </tr>  
+                            
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td><a href="#" class="text-color-primary">PH-8588-10</a></td>
+                                <td>IPhone 6 Plus</td>
+                                <td class="is-centered"><img src="dist/img/48x48.png" alt="" class="image is-48x48"></td>
+                                <td>100</td>
+                                <td>$260.50</td>  
+                                <td class="is-center"><span class=" text-color-danger">Off</span></td>
+                                <td class="is-center">
+                                    <a class="button is-warning is-small"> 
+                                      <i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                                    <a class="button is-danger is-small"> 
+                                      <i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                                  </td>
+                            </tr>
+                            
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td><a href="#" class="text-color-primary">TV-7427-50</a></td>
+                                <td>Samsung Smart TV 50"</td>
+                                <td class="is-centered"><img src="dist/img/48x48.png" alt="" class="image is-48x48"></td>
+                                <td>25</td>
+                                <td>$600.50</td>  
+                                <td class="is-center"><span class=" text-color-success">On</span></td>
+                                <td class="is-center">
+                                    <a class="button is-warning is-small"> 
+                                      <i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                                    <a class="button is-danger is-small"> 
+                                      <i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                                  </td>
+                            </tr>
+
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td><a href="#" class="text-color-primary">PH-7455-30</a></td>
+                                <td>IPhone 6 Plus</td>
+                                <td class="is-centered"><img src="dist/img/48x48.png" alt="" class="image is-48x48"></td>
+                                <td>100</td>
+                                <td>$205.50</td>  
+                                <td class="is-center"><span class="text-color-success">On</span></td>
+                                <td class="is-center">
+                                    <a class="button is-warning is-small"> 
+                                      <i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                                    <a class="button is-danger is-small"> 
+                                      <i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                                  </td>
+                            </tr>
+
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td><a href="#" class="text-color-primary">TV-7450-85</a></td>
+                                <td>Samsung Smart TV 42"</td>
+                                <td class="is-centered"><img src="dist/img/48x48.png" alt="" class="image is-48x48"></td>
+                                <td>85</td>
+                                <td>$465.50</td>  
+                                <td class="is-center"><span class="text-color-success">On</span></td>
+                                <td class="is-center">
+                                    <a class="button is-warning is-small"> 
+                                      <i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                                    <a class="button is-danger is-small"> 
+                                      <i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                                  </td>
+                            </tr>
+
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td><a href="#" class="text-color-primary">TV-7460-45</a></td>
+                                <td>Samsung Smart TV 32"</td>
+                                <td class="is-centered"><img src="dist/img/48x48.png" alt="" class="image is-48x48"></td>
+                                <td><span class="tag is-danger">5</span></td>
+                                <td>$350.50</td>  
+                                <td class="is-center"><span class="text-color-success">On</span></td>
+                                <td class="is-center">
+                                    <a class="button is-warning is-small"> 
+                                      <i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                                    <a class="button is-danger is-small"> 
+                                      <i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                                  </td>
+                            </tr>
+
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td><a href="#" class="text-color-primary">CA-8765-22</a></td>
+                                <td>Call of Duty IV</td>
+                                <td class="is-centered"><img src="dist/img/48x48.png" alt="" class="image is-48x48"></td>
+                                <td>20</td>
+                                <td>$150.00</td>  
+                                <td class="is-center"><span class="text-color-success">On</span></td>
+                                <td class="is-center">
+                                    <a class="button is-warning is-small"> 
+                                      <i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                                    <a class="button is-danger is-small"> 
+                                      <i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                                  </td>
+                              </tr>  
+                           
+                          </tbody>
+                          <tfoot>
+                             <tr>
+                               <td colspan="8">
+                                  <div class="">
+                                      <a class="">Activate Selected</a>
+                                      | <a class="">Deactivate selected</a>
+                                      | <a class="">Delete Selected</a>
+                                   </div> 
+                               </td>
+                               
+                             </tr>
+                          </tfoot>
+                        </table>                      
+                  </div>                  
+                </div>       
+                <footer class="card-footer footer-pagination">                      
+                    <div class="navbar-end">
+                        <nav class="pagination is-small is-centered" role="navigation" aria-label="pagination">
+                            <a class="pagination-previous">Previous</a>
+                            <a class="pagination-next">Next page</a>
+                            <ul class="pagination-list">
+                              <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
+                              <li><span class="pagination-ellipsis">…</span></li>
+                              <li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
+                              <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
+                              <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
+                              <li><span class="pagination-ellipsis">…</span></li>
+                              <li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
+                            </ul>
+                          </nav> 
+                      </div>  
+                </footer>      
+              </div>
+
+          </div> 
+         
+    </div> 
+  </section> 
+  </div>
+
+
+
+  <footer class="main-footer">
+      <div class="pull-right">
+        <b>Version</b> 2.4.0
+      </div>
+      <strong>Copyright © 2016-2017 <a href="https://adminlte.io">Rafael Uzcategui</a>.</strong> All rights
+      reserved.
+  </footer>
+
+</div><!-- FIN DIV WRAPPER -->
+
+ <script src="http://bulma.io/lib/main.js"></script>   
+ <script src="bower_components/vuejs/vue.min.js"></script>
+ <script src="bower_components/vuejs//vue-chartjs.full.min.js"></script>
+ <script src="dist/js/pages/main.js"></script>
+ <!-- <script src="node_modules/vue-bulma-tabs/src/index.js"></script> -->
+
+
+</body>
+<script>
+import { Tabs, TabPane } from 'vue-bulma-tabs'
+
+export default {
+  components: {
+    Tabs,
+    TabPane
+  }
+}
+</script>
+</html>
